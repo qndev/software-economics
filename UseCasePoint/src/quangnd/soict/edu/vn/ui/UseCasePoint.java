@@ -1357,40 +1357,73 @@ public class UseCasePoint extends javax.swing.JFrame {
         JComboBox cb = (JComboBox) evt.getSource();
         String projectID = (String) cb.getSelectedItem();
         CalUseCasePointsDAO cucp = new CalUseCasePointsDAO();
+        EnvironmentalComplexityFactorDAO complexityFactorDAO = new EnvironmentalComplexityFactorDAO();
         ResultSet rs = cucp.getUseCase(projectID);
         ResultSet rs1 = cucp.getActor(projectID);
         ResultSet rs2 = getCalUseCaseAndActor(projectID);
         ResultSet rs3 = getCalEnvironmentalComplexityFactor(projectID);
+        ResultSet resultStability0 = complexityFactorDAO.countStability0(projectID);
+        ResultSet resultStability1 = complexityFactorDAO.countStability1(projectID);
+        ResultSet resultStability2 = complexityFactorDAO.countStability2(projectID);
+        ResultSet resultStability3 = complexityFactorDAO.countStability3(projectID);
+        ResultSet resultStability4 = complexityFactorDAO.countStability4(projectID);
         try {
-            if((rs != null) && (rs1 != null) && (rs2 != null) && (rs3 != null)){
-            if (rs.next() && rs1.next() && rs2.next() && rs3.next()) {
-             jTextField23.setText(rs.getString(1));
-             float complexUseCase = rs.getFloat(1);
-             jTextField22.setText(rs1.getString(1));
-             float complexActor = rs1.getFloat(1);
-             float sumPoints = complexUseCase + complexActor;
-             String result = Float.toString(sumPoints);
-              jTextField24.setText(result);
-              jTextField25.setText(result);
-              jTextField12.setText(rs2.getString(1));
-            float techComplexFactor = rs2.getFloat(1);
-            float calTCF = (float) (0.6 + (0.01*techComplexFactor));
-            String stringCalTCF = Float.toString(calTCF);
-            jTextField15.setText(stringCalTCF);
-            jTextField26.setText(stringCalTCF);
-            jTextField16.setText(rs3.getString(1));
-            float envirComplexFactor = rs3.getFloat(1);
-            float calECF = (float) (1.4 + (-0.03*envirComplexFactor));
-            String stringCalECF = Float.toString(calECF);
-            jTextField19.setText(stringCalECF);
-            jTextField27.setText(stringCalECF);
-            float calAUCP = sumPoints*calTCF*calECF;
-            String stringCalAUCP = Float.toString(calAUCP);
-            jTextField28.setText(stringCalAUCP);
-            }
-            }else{
-            jTextField23.setText("0.00");
-            jTextField22.setText("0.00");
+            if ((rs != null) && (rs1 != null) && (rs2 != null) && (rs3 != null) && (resultStability0 != null) && (resultStability1 != null) && (resultStability2 != null) && (resultStability3 != null) && (resultStability4 != null)) {
+                if (rs.next() && rs1.next() && rs2.next() && rs3.next() && resultStability0.next() && resultStability1.next() && resultStability2.next() && resultStability3.next() && resultStability4.next()) {
+                    jTextField23.setText(rs.getString(1));
+                    float complexUseCase = rs.getFloat(1);
+                    jTextField22.setText(rs1.getString(1));
+                    float complexActor = rs1.getFloat(1);
+                    float sumPoints = complexUseCase + complexActor;
+                    String result = Float.toString(sumPoints);
+                    jTextField24.setText(result);
+                    jTextField25.setText(result);
+                    jTextField12.setText(rs2.getString(1));
+                    float techComplexFactor = rs2.getFloat(1);
+                    float calTCF = (float) (0.6 + (0.01 * techComplexFactor));
+                    String stringCalTCF = Float.toString(calTCF);
+                    jTextField15.setText(stringCalTCF);
+                    jTextField26.setText(stringCalTCF);
+                    jTextField16.setText(rs3.getString(1));
+                    float envirComplexFactor = rs3.getFloat(1);
+                    float calECF = (float) (1.4 + (-0.03 * envirComplexFactor));
+                    String stringCalECF = Float.toString(calECF);
+                    jTextField19.setText(stringCalECF);
+                    jTextField27.setText(stringCalECF);
+                    float calAUCP = sumPoints * calTCF * calECF;
+                    String stringCalAUCP = Float.toString(calAUCP);
+                    jTextField28.setText(stringCalAUCP);
+                    jTextField29.setText(stringCalAUCP);
+                    float countStability0 = resultStability0.getFloat(1);
+                    float countStability1 = resultStability1.getFloat(1);
+                    float countStability2 = resultStability2.getFloat(1);
+                    float countStability3 = resultStability3.getFloat(1);
+                    float countStability4 = resultStability4.getFloat(1);
+                    float es0 = (float) (countStability0 * 0.0);
+                    float es1 = (float) (countStability1 * 0.05);
+                    float es2 = (float) (countStability2 * 0.1);
+                    float es3 = (float) (countStability3 * 0.6);
+                    float es4 = (float) (countStability4 * 1.0);
+                    float esSum = es0 + es1 + es2 + es3 + es4;
+                    String resultES = Float.toString(esSum);
+                    jTextField20.setText(resultES);
+                    if(esSum < 1.0){
+                    jTextField21.setText("48.0");
+                    jTextField30.setText("48.0");
+                    jTextField31.setText(Float.toString((float) (calAUCP*48.0)));
+                    }if(esSum >= 1.0 && esSum < 3.0){
+                    jTextField21.setText("32.0");
+                    jTextField30.setText("32.0");
+                    jTextField31.setText(Float.toString((float) (calAUCP*32.0)));
+                    }else if(esSum >= 3.0){
+                    jTextField21.setText("20.0");
+                    jTextField30.setText("20.0");
+                    jTextField31.setText(Float.toString((float) (calAUCP*20.0)));
+                    }
+                }
+            } else {
+                jTextField23.setText("0.00");
+                jTextField22.setText("0.00");
             }
         } catch (SQLException ex) {
             Logger.getLogger(UseCasePoint.class.getName()).log(Level.SEVERE, null, ex);

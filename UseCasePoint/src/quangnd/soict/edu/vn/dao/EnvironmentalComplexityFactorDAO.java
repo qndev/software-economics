@@ -100,4 +100,84 @@ public class EnvironmentalComplexityFactorDAO {
         }
         return null;
     }
+
+    public ResultSet countStability0(String idProject) {
+        PreparedStatement ps;
+        ResultSet rs;
+        if (DBConnect.open()) {
+            try {
+                ps = DBConnect.cnn.prepareStatement("SELECT COUNT(*) FROM environmental_complexity_factor WHERE id_project=? AND weight*complexity_ecf <= 0");
+                ps.setString(1, idProject); 
+                rs = ps.executeQuery();
+                return rs;
+            } catch (SQLException e) {
+                Logger.getLogger(ProjectsDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return null;
+    }
+    
+    public ResultSet countStability1(String idProject) {
+        PreparedStatement ps;
+        ResultSet rs;
+        if (DBConnect.open()) {
+            try {
+                ps = DBConnect.cnn.prepareStatement("SELECT COUNT(*) FROM environmental_complexity_factor WHERE id_project=? AND 0 < weight*complexity_ecf AND weight*complexity_ecf <= 1");
+                ps.setString(1, idProject); 
+                rs = ps.executeQuery();
+                return rs;
+            } catch (SQLException e) {
+                Logger.getLogger(ProjectsDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return null;
+    }
+    
+    public ResultSet countStability2(String idProject) {
+        PreparedStatement ps;
+        ResultSet rs;
+        if (DBConnect.open()) {
+            try {
+                ps = DBConnect.cnn.prepareStatement("SELECT COUNT(*) FROM environmental_complexity_factor WHERE id_project=? AND 1 < weight*complexity_ecf AND weight*complexity_ecf <= 2");
+                ps.setString(1, idProject); 
+                rs = ps.executeQuery();
+                return rs;
+            } catch (SQLException e) {
+                Logger.getLogger(ProjectsDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return null;
+    }
+    
+    public ResultSet countStability3(String idProject) {
+        PreparedStatement ps;
+        ResultSet rs;
+        if (DBConnect.open()) {
+            try {
+                ps = DBConnect.cnn.prepareStatement("SELECT COUNT(*) FROM environmental_complexity_factor WHERE id_project=? AND 2 < weight*complexity_ecf AND weight*complexity_ecf <= 3");
+                ps.setString(1, idProject); 
+                rs = ps.executeQuery();
+                return rs;
+            } catch (SQLException e) {
+                Logger.getLogger(ProjectsDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return null;
+    }
+    
+    public ResultSet countStability4(String idProject) {
+        PreparedStatement ps;
+        ResultSet rs;
+        if (DBConnect.open()) {
+            try {
+                ps = DBConnect.cnn.prepareStatement("SELECT COUNT(*) FROM environmental_complexity_factor WHERE id_project=? AND weight*complexity_ecf > 3");
+                ps.setString(1, idProject); 
+                rs = ps.executeQuery();
+                return rs;
+            } catch (SQLException e) {
+                Logger.getLogger(ProjectsDAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
+        return null;
+    }
 }
