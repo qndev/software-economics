@@ -39,7 +39,7 @@ public class TechnicalComplexityFactorDAO {
         ResultSet rs;
         if (DBConnect.open()) {
             try {
-                ps = DBConnect.cnn.prepareStatement("SELECT factor_tcf, description, weight, complexity_tcf  FROM technical_complexity_factor WHERE id_project=?");
+                ps = DBConnect.cnn.prepareStatement("SELECT factor_tcf, description, complexity_tcf, weight  FROM technical_complexity_factor WHERE id_project=?");
                 ps.setString(1, projectID);
                 rs = ps.executeQuery();
                 return rs; 

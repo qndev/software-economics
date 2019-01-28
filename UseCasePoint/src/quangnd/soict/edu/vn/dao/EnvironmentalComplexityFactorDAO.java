@@ -38,7 +38,7 @@ public class EnvironmentalComplexityFactorDAO {
         ResultSet rs;
         if (DBConnect.open()) {
             try {
-                ps = DBConnect.cnn.prepareStatement("SELECT factor_ecf, description, weight, complexity_ecf  FROM environmental_complexity_factor WHERE id_project=?");
+                ps = DBConnect.cnn.prepareStatement("SELECT factor_ecf, description, complexity_ecf, weight  FROM environmental_complexity_factor WHERE id_project=?");
                 ps.setString(1, projectID);
                 rs = ps.executeQuery();
                 return rs; 
