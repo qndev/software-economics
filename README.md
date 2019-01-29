@@ -63,7 +63,7 @@
 
   * #### Experience Stability Estimate (ES)
 
-  ES = $$\sum_{i=0}^8 S_i
+  $$ES = \sum_{i=1}^8 S_i$$
 
   | Result    | Estimate duration (P - hours per use case point)    |
   | --------- | --------------------------------------------------- |
