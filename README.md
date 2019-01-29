@@ -106,4 +106,4 @@
   ![New Project](/images/ecf.png)
   
   * #### Estimate Effort
-  ![New Project](/images/ee.png)
+  ![New Project](/images/effort.png)
