@@ -38,7 +38,7 @@
 
 * #### Environmental Complexity Factor (ECF)
 
-  #### ECF = 1.4 + (-0.03 x EF)
+  * #### ECF = 1.4 + (-0.03 x EF)
 
 | Factor    | Description                                | Weight     |
 | --------- | ------------------------------------------ | ---------- |
@@ -51,9 +51,25 @@
 | E7        | Part-time staff                            | -1.0       |
 | E8        | Difficult programming language             | -1.0       |
 
-* #### Use Case Points (UCP)
+  
+  * #### Corresponding interpolation values (S) of Environmental Complexity Factor (ECF)
 
-  #### UCP = (UUCW + UAW) x TCF x ECF
+  | Result    | Interpolation value (S)  |
+  | --------- | ------------------------ |
+  | > 0       | 0.05                     |
+  | > 1       | 0.1                      |
+  | > 2       | 0.6                      |
+  | > 3       | 1.0                      |
+
+  * #### Experience Stability Estimate (ES)
+
+  ES = $$\sum_{i=0}^8 S_i
+
+  | Result    | Estimate duration (P - hours per use case point)    |
+  | --------- | --------------------------------------------------- |
+  | < 1       | 48                                                  |
+  | >= 1      | 32                                                  |
+  | >= 3      | 20                                                  |
 
 * #### Unadjusted Use Case Weight (UUCW)
  
@@ -63,9 +79,17 @@
 
   #### UAW = (Total No. of Simple Actors x 1) + (Total No. Average Actors x 2) + (Total No. Complex Actors x 3)
 
-* #### Use Case Points (UCP)
+* #### Use Case Points (UCP - AUCP)
 
-  #### UCP = (UUCW + UAW) x TCF x ECF
+  #### UCP(AUCP) = (UUCW + UAW) x TCF x ECF (UCP)
+
+* #### Estimate Effort (EE)
+
+  #### EE = AUCPxP (Hours)
+
+* #### Step by step Use Case Points Methods
+
+  ![New Project](/images/UseCasePointsMethod.png)
 
 * #### Review App Demo
 
