@@ -1684,73 +1684,96 @@ public class UseCasePoint extends javax.swing.JFrame {
     // End of variables declaration                   
 
     private void setWeightAndDescriptionTCF(String factorTCF) {
-        if (factorTCF.equals("TCF 01")) {
-            jTextField7.setText("2.0");
-            jTextField8.setText("Distributed system");
-        } else if (factorTCF.equals("TCF 02")) {
-            jTextField7.setText("1.0");
-            jTextField8.setText("Response time/performance objectives");
-        } else if (factorTCF.equals("TCF 03")) {
-            jTextField7.setText("1.0");
-            jTextField8.setText("End-user efficiency");
-        } else if (factorTCF.equals("TCF 04")) {
-            jTextField7.setText("1.0");
-            jTextField8.setText("Internal processing complexity");
-        } else if (factorTCF.equals("TCF 05")) {
-            jTextField7.setText("1.0");
-            jTextField8.setText("Code reusability");
-        } else if (factorTCF.equals("TCF 06")) {
-            jTextField7.setText("0.5");
-            jTextField8.setText("Easy to install");
-        } else if (factorTCF.equals("TCF 07")) {
-            jTextField7.setText("0.5");
-            jTextField8.setText("Easy to use");
-        } else if (factorTCF.equals("TCF 08")) {
-            jTextField7.setText("2.0");
-            jTextField8.setText("Portability to other platforms");
-        } else if (factorTCF.equals("TCF 09")) {
-            jTextField7.setText("1.0");
-            jTextField8.setText("System maintenance");
-        } else if (factorTCF.equals("TCF 10")) {
-            jTextField7.setText("1.0");
-            jTextField8.setText("Concurrent/parallel processing");
-        } else if (factorTCF.equals("TCF 11")) {
-            jTextField7.setText("1.0");
-            jTextField8.setText("Security features");
-        } else if (factorTCF.equals("TCF 12")) {
-            jTextField7.setText("1.0");
-            jTextField8.setText("Access for third parties");
-        } else {
-            jTextField7.setText("1.0");
-            jTextField8.setText("End user training");
+        switch (factorTCF) {
+            case "TCF 01":
+                jTextField7.setText("2.0");
+                jTextField8.setText("Distributed system");
+                break;
+            case "TCF 02":
+                jTextField7.setText("1.0");
+                jTextField8.setText("Response time/performance objectives");
+                break;
+            case "TCF 03":
+                jTextField7.setText("1.0");
+                jTextField8.setText("End-user efficiency");
+                break;
+            case "TCF 04":
+                jTextField7.setText("1.0");
+                jTextField8.setText("Internal processing complexity");
+                break;
+            case "TCF 05":
+                jTextField7.setText("1.0");
+                jTextField8.setText("Code reusability");
+                break;
+            case "TCF 06":
+                jTextField7.setText("0.5");
+                jTextField8.setText("Easy to install");
+                break;
+            case "TCF 07":
+                jTextField7.setText("0.5");
+                jTextField8.setText("Easy to use");
+                break;
+            case "TCF 08":
+                jTextField7.setText("2.0");
+                jTextField8.setText("Portability to other platforms");
+                break;
+            case "TCF 09":
+                jTextField7.setText("1.0");
+                jTextField8.setText("System maintenance");
+                break;
+            case "TCF 10":
+                jTextField7.setText("1.0");
+                jTextField8.setText("Concurrent/parallel processing");
+                break;
+            case "TCF 11":
+                jTextField7.setText("1.0");
+                jTextField8.setText("Security features");
+                break;
+            case "TCF 12":
+                jTextField7.setText("1.0");
+                jTextField8.setText("Access for third parties");
+                break;
+            default:
+                jTextField7.setText("1.0");
+                jTextField8.setText("End user training");
+                break;
         }
     }
 
     private void setWeightAndDescriptionECF(String factorECF) {
-        if (factorECF.equals("ECF 01")) {
-            jTextField9.setText("1.5");
-            jTextField10.setText("Familiarity with development process used");
-        } else if (factorECF.equals("ECF 02")) {
-            jTextField9.setText("0.5");
-            jTextField10.setText("Application experience");
-        } else if (factorECF.equals("ECF 03")) {
-            jTextField9.setText("1.0");
-            jTextField10.setText("Object-oriented experience of team");
-        } else if (factorECF.equals("ECF 04")) {
-            jTextField9.setText("0.5");
-            jTextField10.setText("Lead analyst capability");
-        } else if (factorECF.equals("ECF 05")) {
-            jTextField9.setText("1.0");
-            jTextField10.setText("Motivation of the team");
-        } else if (factorECF.equals("ECF 06")) {
-            jTextField9.setText("2.0");
-            jTextField10.setText("Stability of requirements");
-        } else if (factorECF.equals("ECF 07")) {
-            jTextField9.setText("-1.0");
-            jTextField10.setText("Part-time staff");
-        } else {
-            jTextField9.setText("-1.0");
-            jTextField10.setText("Difficult programming language");
+        switch (factorECF) {
+            case "ECF 01":
+                jTextField9.setText("1.5");
+                jTextField10.setText("Familiarity with development process used");
+                break;
+            case "ECF 02":
+                jTextField9.setText("0.5");
+                jTextField10.setText("Application experience");
+                break;
+            case "ECF 03":
+                jTextField9.setText("1.0");
+                jTextField10.setText("Object-oriented experience of team");
+                break;
+            case "ECF 04":
+                jTextField9.setText("0.5");
+                jTextField10.setText("Lead analyst capability");
+                break;
+            case "ECF 05":
+                jTextField9.setText("1.0");
+                jTextField10.setText("Motivation of the team");
+                break;
+            case "ECF 06":
+                jTextField9.setText("2.0");
+                jTextField10.setText("Stability of requirements");
+                break;
+            case "ECF 07":
+                jTextField9.setText("-1.0");
+                jTextField10.setText("Part-time staff");
+                break;
+            default:
+                jTextField9.setText("-1.0");
+                jTextField10.setText("Difficult programming language");
+                break;
         }
     }
 
